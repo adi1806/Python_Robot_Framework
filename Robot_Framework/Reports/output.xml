@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.10.0rc2 on win32)" generated="2024-09-23T03:50:05.803229" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Parabank" source="C:\Users\ac57486\OneDrive - Lumen\Pictures\MyFolder\BDD\Robot_Framework\tests\test_parabank.robot">
+<test id="s1-t1" name="Login To ParaBank" line="16">
+<kw name="Open Browser And Maximize" owner="BankSteps" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-09-23T03:50:08.185884" level="INFO">Opening browser 'chrome' to base url 'http://parabank.parasoft.com'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-09-23T03:50:08.184873" elapsed="9.607183"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.793057" elapsed="0.099602"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.892659" elapsed="0.004601"/>
+</kw>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${IMPLICIT_WAIT}</arg>
+<status status="PASS" start="2024-09-23T03:50:08.182874" elapsed="9.714386"/>
+</kw>
+<kw name="Read Credentials From CSV" owner="resources">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2024-09-23T03:50:17.903031" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\ac57486\OneDrive - Lumen\Pictures\MyFolder\BDD\Robot_Framework\TestData\credentials.csv"&gt;C:\Users\ac57486\OneDrive - Lumen\Pictures\MyFolder\BDD\Robot_Framework\TestData\credentials.csv&lt;/a&gt;'.</msg>
+<msg time="2024-09-23T03:50:17.911091" level="INFO">${content} = username,password
+john,demo</msg>
+<var>${content}</var>
+<arg>${CSV_FILE}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.901623" elapsed="0.009468"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2024-09-23T03:50:17.913430" level="INFO">${lines} = ['username,password', 'john,demo']</msg>
+<var>${lines}</var>
+<arg>${content}</arg>
+<arg>\n</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.912414" elapsed="0.001016"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-09-23T03:50:17.914638" level="INFO">${header} = username,password</msg>
+<var>${header}</var>
+<arg>${lines}[0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.913430" elapsed="0.001208"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-09-23T03:50:17.915835" level="INFO">${data} = john,demo</msg>
+<var>${data}</var>
+<arg>${lines}[1]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.914638" elapsed="0.001197"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-09-23T03:50:17.918043" level="INFO">${username} = john</msg>
+<var>${username}</var>
+<arg>${data.split(',')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.917005" elapsed="0.001038"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-09-23T03:50:17.920150" level="INFO">${password} = demo</msg>
+<var>${password}</var>
+<arg>${data.split(',')[1]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.919128" elapsed="0.002013"/>
+</kw>
+<return>
+<value>${username}</value>
+<value>${password}</value>
+<status status="PASS" start="2024-09-23T03:50:17.921141" elapsed="0.000000"/>
+</return>
+<msg time="2024-09-23T03:50:17.922142" level="INFO">${USERNAME} = john</msg>
+<msg time="2024-09-23T03:50:17.922142" level="INFO">${PASSWORD} = demo</msg>
+<var>${USERNAME}</var>
+<var>${PASSWORD}</var>
+<arg>${CSV_FILE}</arg>
+<status status="PASS" start="2024-09-23T03:50:17.898259" elapsed="0.023883"/>
+</kw>
+<kw name="Login To Application" owner="BankSteps">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-09-23T03:50:17.925237" level="INFO">Typing text 'john' into text field 'name=username'.</msg>
+<arg>name=username</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-09-23T03:50:17.924144" elapsed="0.290140"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-09-23T03:50:18.216514" level="INFO">Typing text 'demo' into text field 'name=password'.</msg>
+<arg>name=password</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-09-23T03:50:18.215485" elapsed="0.255861"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-09-23T03:50:18.472481" level="INFO">Clicking button 'xpath=//input[@type='submit']'.</msg>
+<arg>xpath=//input[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-09-23T03:50:18.471346" elapsed="2.218400"/>
+</kw>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<status status="PASS" start="2024-09-23T03:50:17.923142" elapsed="2.766604"/>
+</kw>
+<kw name="Validate Page Title" owner="BankSteps">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2024-09-23T03:50:21.055740" level="INFO">Page title is 'ParaBank | Accounts Overview'.</msg>
+<arg>ParaBank | Accounts Overview</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2024-09-23T03:50:20.691776" elapsed="0.363964"/>
+</kw>
+<status status="PASS" start="2024-09-23T03:50:20.690758" elapsed="0.365997"/>
+</kw>
+<kw name="Run Keywords" owner="BuiltIn" type="TEARDOWN">
+<kw name="Capture Screenshot On Failure" owner="resources">
+<kw name="Register Keyword To Run On Failure" owner="SeleniumLibrary">
+<msg time="2024-09-23T03:50:21.059757" level="INFO">Capture Page Screenshot will be run on failure.</msg>
+<arg>Capture Page Screenshot</arg>
+<doc>Sets the keyword to execute, when a SeleniumLibrary keyword fails.</doc>
+<status status="PASS" start="2024-09-23T03:50:21.059757" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2024-09-23T03:50:21.058756" elapsed="0.001999"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-09-23T03:50:21.061753" elapsed="8.956902"/>
+</kw>
+<arg>Capture Screenshot On Failure</arg>
+<arg>Close Browser</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2024-09-23T03:50:21.057754" elapsed="8.960901"/>
+</kw>
+<doc>Test case to login to ParaBank and validate the title</doc>
+<tag>smoke</tag>
+<status status="PASS" start="2024-09-23T03:50:08.180800" elapsed="21.837855"/>
+</test>
+<doc>Test suite for ParaBank application</doc>
+<status status="PASS" start="2024-09-23T03:50:05.829126" elapsed="24.191539"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Parabank">Test Parabank</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

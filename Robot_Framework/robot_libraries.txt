@@ -1,0 +1,5 @@
+robotframework==7.1
+robotframework-seleniumlibrary==6.1.2
+selenium==4.24.0
+csv23==0.3.4
+robotframework-pabot==2.18.0
